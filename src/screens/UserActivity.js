@@ -13,9 +13,9 @@ function UserActivity() {
     const [isClosed, setIsClosed] = useState(false);
     const [isMinimized, setIsMinimized] = useState(false);
     const [isMaximized, setIsMaximized] = useState(false);
-
+    const defaultPosition = {top:"15%" , left: "15%"};
     const [taskbarItems, setTaskbarItems] = useState([]);
-    const [modalPosition, setModalPosition] = useState({ top: "15%", left: "15%" });
+    const [modalPosition, setModalPosition] = useState(defaultPosition);
     const [dragging, setDragging] = useState(false);
     const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 });
 
@@ -122,6 +122,7 @@ function UserActivity() {
 
     const handleMouseUp = () => {
         setDragging(false);
+        setModalPosition(defaultPosition);
     };
 
     const handleMinimize = () => {

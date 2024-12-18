@@ -13,9 +13,9 @@ function ActiveUsers() {
   const [isClosed, setIsClosed] = useState(false);
   const [isMinimized, setIsMinimized] = useState(false);
   const [isMaximized, setIsMaximized] = useState(false);
-
+  const defaultPosition = { top: "15%", left: "15%" };
   const [taskbarItems, setTaskbarItems] = useState([]);
-  const [modalPosition, setModalPosition] = useState({ top: "15%", left: "15%" });
+  const [modalPosition, setModalPosition] = useState(defaultPosition);
   const [dragging, setDragging] = useState(false);
   const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 });
 
@@ -122,6 +122,7 @@ function ActiveUsers() {
 
   const handleMouseUp = () => {
     setDragging(false);
+    setModalPosition(defaultPosition);
   };
 
   const handleMinimize = () => {
@@ -177,8 +178,6 @@ function ActiveUsers() {
     marginRight: "8px",
   };
 
-
-
   return (
     <div
       style={{ position: "relative", width: "100%", height: "100vh", backgroundColor: "#1e1e2f" }}
@@ -219,13 +218,6 @@ function ActiveUsers() {
               </button>
             </div>
           </div>
-
-
-
-
-
-
-
           <svg className="Active-User-Line" style={
             {
               position: "absolute",
@@ -243,8 +235,6 @@ function ActiveUsers() {
               strokeWidth="1"
             />
           </svg>
-
-
           <svg className="User-Line" style={
             {
               position: "absolute",
@@ -262,12 +252,8 @@ function ActiveUsers() {
             />
           </svg>
 
-
           <div className="container">
-
-
-
-            <div className="b1">
+          <div className="b1">
               <div className="h1-line"></div>
               <div className="v1-line"></div>
               <div className="h2-line"></div>
@@ -277,14 +263,6 @@ function ActiveUsers() {
             </div>
 
           </div>
-
-
-
-
-
-
-
-
 
           <div
             style={{
@@ -321,15 +299,12 @@ function ActiveUsers() {
             75% Users
           </div>
 
-
           <div ref={mountRef} style={
             {
               height: "100%",
               width: "100%",
             }
           }></div>
-
-
           <div
             style={{
               position: "absolute",
@@ -346,8 +321,6 @@ function ActiveUsers() {
         </div>
       )
       }
-
-
       <div style={taskbarStyle}>
         {taskbarItems.map((item, index) => (
           <button key={index} style={taskbarButtonStyle} onClick={handleRestore}>
